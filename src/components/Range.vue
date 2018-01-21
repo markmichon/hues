@@ -1,7 +1,7 @@
 <template>
     <div>
-      <input class="control--range" type="range" :value="rangevalue" @input="updateValue" :name="reference" :id="reference" :min="min" :max="max">
-      <label class="control--label" for="">{{label}}: {{rangevalue}}deg</label>
+      <input class="control--range" :style="{background: bg}" type="range" :value="rangevalue" @input="updateValue" :name="reference" :id="reference" :min="min" :max="max">
+      <label class="control--label" for="">{{label}}: {{rangevalue}}{{suffix}}</label>
     </div>
 </template>
 
@@ -22,7 +22,9 @@ export default {
       required: false
     },
     min: [Number, String],
-    max: [Number, String]
+    max: [Number, String],
+    suffix: String,
+    bg: String
   },
   data() {
     return {

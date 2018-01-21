@@ -46,14 +46,15 @@ export default {
 }
 
 .output--container {
-  width: 500px;
-  padding: 1rem;
+  /* width: 500px; */
+  padding: 4rem 2rem;
   margin-bottom: 1rem;
 }
 
 .output--heading {
-  font-size: 3rem;
+  text-align:center;
+  font-size: 8rem;
   line-height: 1;
-  margin-bottom: 0.5rem;
+  margin:0;
 }
 </style>
