@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="control--container">
+      <label class="control--label" for="">{{label}}</label>
       <input class="control--range" :style="{background: bg}" type="range" :value="rangevalue" @input="updateValue" :name="reference" :id="reference" :min="min" :max="max">
-      <label class="control--label" for="">{{label}}: {{rangevalue}}{{suffix}}</label>
+      <span class="control--value">{{rangevalue}}{{suffix}}</span>
     </div>
 </template>
 
@@ -55,15 +56,16 @@ export default {
 </script>
 
 <style scoped>
-.form {
-  background-color: #efefef;
-  border-radius: 4px;
-  padding: 0.5rem;
+.control--container {
+  display: grid;
+  grid-template-columns: 2em 1fr 5em;
+  grid-gap: 1rem;
 }
 .control--label {
   display: block;
 }
 .control--range {
   display: block;
+  width: 100%;
 }
 </style>

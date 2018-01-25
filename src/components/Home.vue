@@ -1,8 +1,10 @@
 <template>
 <div>
   <preview :foreground="foreground" :background="background">
-    <controls title="Foreground" target="foreground" v-model="foreground"/>
-    <controls title="Background" target="background" v-model="background"/>
+    <div class="control--container">
+      <controls title="Foreground" target="foreground" v-model="foreground"/>
+      <controls title="Background" target="background" v-model="background"/>
+    </div>
   </preview>
 </div>
 
@@ -40,6 +42,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-
+<style scoped>
+.control--container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
 </style>
