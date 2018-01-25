@@ -1,12 +1,12 @@
 <template>
-<div>
+<div class="home--container">
   <preview :foreground="foreground" :background="background">
+  </preview>
     <div slot="controls" class="control--container">
       <controls title="Foreground" target="foreground" v-model="foreground"/>
       <controls title="Background" target="background" v-model="background"/>
     </div>
-    <output slot="output" colorStrings="colors" />
-  </preview>
+    <output-info slot="output" :foreground="foregroundOutput" :background="backgroundOutput" />
 </div>
 
 </template>
@@ -18,7 +18,7 @@ import Output from "./Output"
 import Color from "color"
 export default {
   name: "home",
-  components: { Preview, Controls, Output },
+  components: { Preview, Controls, "output-info": Output },
   data() {
     return {
       // foreground: {
@@ -39,12 +39,20 @@ export default {
         return this.$store.state.background
       }
     },
-    colors() {
+    foregroundOutput() {
       const color = Color(this.$store.state.foreground)
       return {
         hex: color.hex(),
-        rgb: color.rgb(),
-        hsl: color.hsl()
+        rgb: color.rgb().string(),
+        hsl: color.hsl().string()
+      }
+    },
+    backgroundOutput() {
+      const color = Color(this.$store.state.background)
+      return {
+        hex: color.hex(),
+        rgb: color.rgb().string(),
+        hsl: color.hsl().string()
       }
     }
   },
@@ -54,8 +62,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.control--container {
-  /* display: grid;
-  grid-template-rows: 1fr 1fr; */
+.home--container {
+  display: grid;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 3fr 2fr 2fr;
 }
 </style>

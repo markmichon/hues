@@ -8,14 +8,14 @@ const debug = process.env.NODE_ENV !== "production"
 export default new Vuex.Store({
   state: {
     foreground: {
-      h: 100,
-      s: 80,
-      l: 80
+      h: 0,
+      s: 0,
+      l: 95
     },
     background: {
-      h: 300,
-      s: 20,
-      l: 20
+      h: 145,
+      s: 68,
+      l: 42
     }
   },
   getters: {

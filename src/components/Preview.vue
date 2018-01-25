@@ -7,9 +7,6 @@
         </h2>
       <p class="output--paragraph" :style="{color: foregroundColor}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <slot name="controls"></slot>
-    <slot name="outut"></slot>
-
   </section>
 </template>
 
@@ -55,13 +52,6 @@ export default {
 
 <style scoped>
 .output {
-  display: grid;
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: 3fr 2fr 2fr;
 }
 
 .output--container {
