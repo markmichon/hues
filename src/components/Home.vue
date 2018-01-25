@@ -1,10 +1,11 @@
 <template>
 <div>
   <preview :foreground="foreground" :background="background">
-    <div class="control--container">
+    <div slot="controls" class="control--container">
       <controls title="Foreground" target="foreground" v-model="foreground"/>
       <controls title="Background" target="background" v-model="background"/>
     </div>
+    <output slot="output" colorStrings="colors" />
   </preview>
 </div>
 
@@ -13,9 +14,11 @@
 <script>
 import Preview from "./Preview"
 import Controls from "./Controls"
+import Output from "./Output"
+import Color from "color"
 export default {
   name: "home",
-  components: { Preview, Controls },
+  components: { Preview, Controls, Output },
   data() {
     return {
       // foreground: {
@@ -35,6 +38,14 @@ export default {
       get() {
         return this.$store.state.background
       }
+    },
+    colors() {
+      const color = Color(this.$store.state.foreground)
+      return {
+        hex: color.hex(),
+        rgb: color.rgb(),
+        hsl: color.hsl()
+      }
     }
   },
   methods: {}
@@ -44,7 +55,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .control--container {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+  /* display: grid;
+  grid-template-rows: 1fr 1fr; */
 }
 </style>

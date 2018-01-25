@@ -3,18 +3,19 @@
     <div class="output--container" >
       <h2 class="output--heading" :style="{color: foregroundColor}">
         <span :style="{color: foregroundColor}">Aa</span>
-        <span :style="{color: step}">Aa</span>
+        <!-- <span :style="{color: hexCode}">{{hexCode}}</span> -->
         </h2>
       <p class="output--paragraph" :style="{color: foregroundColor}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <slot></slot>
+    <slot name="controls"></slot>
+    <slot name="outut"></slot>
 
   </section>
 </template>
 
 <script>
-// const getHSL = ({ h, s, l }) => `hsl(${h},${s}%,${l}%)`
 import { hslString } from "../utils"
+import Color from "color"
 export default {
   name: "preview",
   props: {
@@ -43,6 +44,10 @@ export default {
       const { h, s, l } = this.foreground
       const newL = l < 50 ? l + 20 : l - 20
       return hslString(h, s, newL)
+    },
+    hexCode() {
+      const color = Color(this.foreground)
+      return color.hex()
     }
   }
 }
@@ -56,7 +61,7 @@ export default {
   margin-left: auto;
   align-items: center;
   justify-content: center;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 2fr 2fr;
 }
 
 .output--container {
